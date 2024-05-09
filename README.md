@@ -25,3 +25,15 @@
 - A mutation is typically used to create, update or delete data.
 
 - A mutation is not read-only, meaning that it modifies the data on the server.
+
+## useQuery
+
+- The `useQuery` hook is used to fetch data from an API and store it in a cache.
+
+### QueryFn
+
+- A queryFn is a function that is used to fetch data from an API.
+
+- If an error occurs while fetching the data, the queryFn should throw an error, which will be caught by React Query and stored in the cache.
+
+- It retries the queryFn a few times before giving up.
