@@ -37,3 +37,45 @@
 - If an error occurs while fetching the data, the queryFn should throw an error, which will be caught by React Query and stored in the cache.
 
 - It retries the queryFn a few times before giving up.
+
+- The queryFn can be an async function that returns a Promise, or a synchronous function that returns the data directly.'
+
+Example:
+
+```javascript
+queryFn: async (obj) => {
+   console.log(obj);
+  return "data";
+}
+```
+
+output:
+
+```javascript
+{ queryKey: ['posts'], ... }
+```
+
+### QueryKey
+
+- A queryKey is a unique identifier for a query.
+
+- The queryKey is used to store the data in the cache and to retrieve the data from the cache.
+
+- The queryKey is typically a string that represents the query, but it can also be an array of strings or numbers.
+
+Example:
+
+/posts - queryKey: 'posts'
+/posts/1 - queryKey: ['posts', 1]
+/posts/1/comments - queryKey: ['posts', 1, 'comments']
+/posts?authorId=1 - queryKey: ['posts', { authorId: 1 }]
+/posts?authorId=1&category=react - queryKey: ['posts', { authorId: 1, category: 'react' }]
+
+### Query Properties
+
+postQuery.data
+postQuery.error
+postQuery.isLoading
+postQuery.isFetching
+postQuery.isError
+postQuery.isSuccess
