@@ -30,6 +30,12 @@
 
 - The `useQuery` hook is used to fetch data from an API and store it in a cache.
 
+Destructuring the useQuery hook:
+
+```javascript
+const { data, error, isLoading, isFetching, isError, isSuccess } = useQuery(queryKey, queryFn, options);
+```
+
 ### QueryFn
 
 - A queryFn is a function that is used to fetch data from an API.
