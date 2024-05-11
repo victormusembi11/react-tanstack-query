@@ -33,7 +33,7 @@
 Destructuring the useQuery hook:
 
 ```javascript
-const { data, error, isLoading, isFetching, isError, isSuccess } = useQuery(queryKey, queryFn, options);
+const { data, error, isLoading, isFetching, isError, isSuccess } = useQuery(queryKey, queryFn, staleTime, options);
 ```
 
 ### QueryFn
@@ -85,6 +85,20 @@ postQuery.isLoading
 postQuery.isFetching
 postQuery.isError
 postQuery.isSuccess
+
+### StaleTime
+
+- The staleTime option is used to specify how long the data should be considered fresh.
+
+- If the data is older than the staleTime, React Query will refetch the data from the server.
+
+- The staleTime option can be a number of milliseconds, or a function that returns a number of milliseconds.
+
+Example:
+
+```javascript
+staleTime: 60000
+```
 
 ## useMutation
 

@@ -13,6 +13,7 @@ export default function Example2() {
   } = useQuery({
     queryKey: ["todos"],
     queryFn: () => fetchTodos(),
+    staleTime: Infinity, // cache never expires
   });
 
   const { mutateAsync: addTodoMutation } = useMutation({
