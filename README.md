@@ -85,3 +85,73 @@ postQuery.isLoading
 postQuery.isFetching
 postQuery.isError
 postQuery.isSuccess
+
+## useMutation
+
+- The `useMutation` hook is used to send a mutation to the server.
+
+Destructuring the useMutation hook:
+
+```javascript
+const { mutate, mutateAsync, data, error, isLoading, isSuccess, isError } = useMutation(mutationFn, onMutate, onSuccess, onError, onSettled, options);
+```
+
+### MutationFn
+
+- A mutationFn is a function that is used to send a mutation to the server.
+
+- If an error occurs while sending the mutation, the mutationFn should throw an error, which will be caught by React Query and stored in the cache.
+
+- The mutationFn can be an async function that returns a Promise, or a synchronous function that returns the data directly.
+
+Example:
+
+```javascript
+mutationFn: async (obj) => {
+  console.log(obj);
+  return "data";
+}
+```
+
+output:
+
+```javascript
+{ queryKey: ['posts'], ... }
+```
+
+### Mutation Properties
+
+postMutation.mutate
+postMutation.data
+postMutation.error
+postMutation.isLoading
+postMutation.isSuccess
+postMutation.isError
+
+### Invalidating Queries
+
+- When a mutation is successful, you can invalidate queries that are affected by the mutation.
+
+- Invalidating a query will cause the query to refetch the data from the server.
+
+- You can invalidate a query by calling the `invalidateQueries` function with the queryKey of the query that you want to invalidate.
+
+Example:
+
+```javascript
+import { useMutation, queryClient } from 'react-query';
+
+// ... code
+
+const queryClient = new QueryClient();
+
+// ... code
+
+const postMutation = useMutation(createPost, {
+  onSuccess: () => {
+    queryClient.invalidateQueries('posts');
+  }
+});
+
+// ... code
+```
