@@ -33,7 +33,7 @@
 Destructuring the useQuery hook:
 
 ```javascript
-const { data, error, isLoading, isFetching, isError, isSuccess } = useQuery(queryKey, queryFn, staleTime, cacheTime, options);
+const { data, error, isLoading, isFetching, isError, isSuccess } = useQuery(queryKey, queryFn, staleTime, cacheTime, refetchInterval, options);
 ```
 
 ### QueryFn
@@ -112,6 +112,20 @@ Example:
 
 ```javascript
 cacheTime: 60000
+```
+
+### Refetch Interval
+
+- The refetchInterval option is used to specify how often the data should be refetched from the server.
+
+- If the refetchInterval is set to a number of milliseconds, React Query will refetch the data from the server at regular intervals.
+
+- The refetchInterval option can be a number of milliseconds, or a function that returns a number of milliseconds.
+
+Example:
+
+```javascript
+refetchInterval: 60000
 ```
 
 ## useMutation

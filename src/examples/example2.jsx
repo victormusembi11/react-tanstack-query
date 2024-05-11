@@ -15,6 +15,7 @@ export default function Example2() {
     queryFn: () => fetchTodos(),
     staleTime: Infinity, // cache never expires
     cacheTime: 0, // cache never revalidates
+    refetchInterval: false, // disable polling
   });
 
   const { mutateAsync: addTodoMutation } = useMutation({
