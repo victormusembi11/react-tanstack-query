@@ -33,7 +33,7 @@
 Destructuring the useQuery hook:
 
 ```javascript
-const { data, error, isLoading, isFetching, isError, isSuccess } = useQuery(queryKey, queryFn, staleTime, options);
+const { data, error, isLoading, isFetching, isError, isSuccess } = useQuery(queryKey, queryFn, staleTime, cacheTime, options);
 ```
 
 ### QueryFn
@@ -98,6 +98,20 @@ Example:
 
 ```javascript
 staleTime: 60000
+```
+
+### Cache Time
+
+- The cacheTime option is used to specify how long the data should be stored in the cache.
+
+- If the data is older than the cacheTime, React Query will remove the data from the cache.
+
+- The cacheTime option can be a number of milliseconds, or a function that returns a number of milliseconds.
+
+Example:
+
+```javascript
+cacheTime: 60000
 ```
 
 ## useMutation
