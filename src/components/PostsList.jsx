@@ -1,15 +1,8 @@
 import { useContext } from "react";
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
 import { PostsContext } from "../contexts/PostsContext";
-
-const fetchPosts = async () => {
-  const { data } = await axios.get(
-    "https://jsonplaceholder.typicode.com/posts"
-  );
-  return data;
-};
+import { fetchPosts } from "../api/posts";
 
 export default function PostsList() {
   const { state } = useContext(PostsContext);
